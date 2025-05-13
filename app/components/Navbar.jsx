@@ -30,7 +30,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
     <>
       <div className="fixed top-0 right-0 w-11/12 -z-10 translate-y-[-80%] dark:hidden">
         <Image
-          src={assets.header_bg_color}
+          src={isDarkMode ? assets.header_bg_color : null}
           alt="Imagem de fundo do cabeçalho"
           className="w-full"
         />
@@ -57,8 +57,6 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
               src={isDarkMode ? assets.sun_icon : assets.moon_icon}
               alt={isDarkMode ? "Ícone de sol para tema claro" : "Ícone de lua para tema escuro"}
               className="w-6"
-              width={24}
-              height={24}
             />
           </button>
           <a
