@@ -1,26 +1,134 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-lightHover: #fcf4ff;
+  --color-darkHover: #2a004a;
+  --color-darkTheme: #11001f;
+  --color-bg: #ffffff;
+  --color-text: #1f2937;
+  --shadow-black: 4px 4px 0 #000;
+  --shadow-white: 4px 4px 0 #fff;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark {
+  --color-lightHover: #4c1d95;
+  --color-darkHover: #6b7280;
+  --color-bg: #11001f;
+  --color-text: #ffffff;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.font-outfit {
+  font-family: "Outfit", sans-serif;
+}
+
+.font-ovo {
+  font-family: "Ovo", sans-serif;
+}
+
+.shadow-black {
+  box-shadow: var(--shadow-black);
+}
+
+.dark .shadow-black {
+  box-shadow: var(--shadow-white);
+}
+
+.dark .text-branco{
+  color: var(--color-text);
+}
+
+.grid-cols-auto {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.bg-footer {
+  background-image: url("/footer-bg-color.png");
+  background-size: 90% auto;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.dark .bg-footer{
+  background: none;
+}
+
+.bg-lightHover {
+  background-color: var(--color-lightHover);
+}
+
+.bg-darkHover {
+  background-color: var(--color-darkHover);
+}
+
+.bg-darkTheme {
+  background-color: var(--color-darkTheme);
+}
+
+.dark .text-gray-700 {
+  color: #e5e7eb;
+}
+
+.dark .text-gray-600 {
+  color: #d1d5db;
+}
+
+.dark .border-gray-400 {
+  border-color: #4b5563;
+}
+
+.dark .border-gray-500 {
+  border-color: #6b7280;
+}
+
+.dark .bg-white {
+  background-color: #ffffff;
+}
+
+.dark .bg-white\/50 {
+  background-color: rgba(31, 41, 55, 0.5);
+}
+
+.dark .bg-white\/80 {
+  background-color: rgba(31, 41, 55, 0.8);
+}
+
+.dark .bg-white\/90 {
+  background-color: rgba(31, 41, 55, 0.9);
+}
+
+.dark .group-hover\:bg-lime-300 {
+  background-color: #a3e635;
+}
+
+.dark .border-black {
+  border-color: #e5e7eb;
+}
+
+.dark .button-header {
+  background-color: transparent;
+}
+
+.list-item-light {
+  border: 1px solid #ffffff; /* Borda preta no tema claro */
+  color: var(--color-text); /* Texto preto */
+}
+
+.list-item-light:hover {
+  border: 1px solid #000000;
+  box-shadow: var(--shadow-black); /* Sombra preta apenas no hover */
+}
+
+.list-item-dark {
+   /* Borda branca no tema escuro */
+  color: var(--color-text); /* Texto branco */
+}
+
+.dark .list-item-dark:hover {
+  box-shadow: var(--shadow-white); /* Sombra branca apenas no hover */
 }
