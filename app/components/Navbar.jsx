@@ -29,11 +29,6 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
   return (
     <>
       <div className="fixed top-0 right-0 w-11/12 -z-10 translate-y-[-80%] dark:hidden">
-        <Image
-          src={isDarkMode ? assets.header_bg_color : null}
-          alt="Imagem de fundo do cabeçalho"
-          className="w-full"
-        />
       </div>
       <nav className={`w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50 ${isScroll ? "bg-white/50 backdrop-blur-lg shadow-sm dark:shadow-white/20" : "bg-transparent"}`}>
         <a href="#top">

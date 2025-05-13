@@ -31,7 +31,7 @@ export const Work = ({isDarkMode}) => {
             className='text-center max-w-2xl mx-auto mt-5 mb-12 font-ovo'
             >Bem-vindo ao meu portfólio de desenvolvimento web! Descubra projetos que destacam minha paixão por criar projetos web elegantes e funcionais.</motion.p>
 
-            <div
+            <motion.div
             initial={{opacity: 0}}
             whileInView={{opacity: 1}}
             transition={{delay: 0.9, duration:0.6}}
@@ -54,7 +54,7 @@ export const Work = ({isDarkMode}) => {
                         </div>
                     </motion.div>
                 ))}
-            </div>
+            </motion.div>
             <div className='font-outfit'>
                 <motion.a
                 initial={{opacity: 0}}
