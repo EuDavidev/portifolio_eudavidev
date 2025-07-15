@@ -79,28 +79,32 @@ export const assets = {
 export const workData = [
     {
         title: 'Projeto Frontend',
-        description: 'Web Design',
+        description: 'Web Development',
         bgImage: '/work-1.png',
+        link: 'https://restaurante-pi-seven.vercel.app/'
     },
     {
-        title: 'Aplicativo Mobile',
-        description: 'Mobile App',
+        title: 'Dev Cake',
+        description: 'Site de doces',
         bgImage: '/work-2.png',
+        link: 'https://devcake.vercel.app/'
     },
     {
         title: 'Site de Carro',
         description: 'Web Design',
         bgImage: '/work-3.png',
+        link: 'https://eudavidev.github.io/Site-base-NissanGTR/'
     },
     {
-        title: 'UI/UX designing',
-        description: 'UI/UX Design',
+        title: 'Dr. Agenda',
+        description: 'Web Development',
         bgImage: '/work-4.png',
+        link: 'https://github.com/EuDavidev/doutor-agenda'
     },
 ]
 
 export const serviceData = [
-    { icon: assets.web_icon, title: 'Web design', description: 'O desenvolvimento web é o processo de construção, programação...', link: '' },
+    { icon: assets.web_icon, title: 'Web development', description: 'O desenvolvimento web é o processo de construção, programação...', link: '' },
     { icon: assets.mobile_icon, title: 'Mobile app', description: 'O desenvolvimento de aplicativos móveis envolve a criação de software para dispositivos móveis...', link: '' },
     { icon: assets.ui_icon, title: 'UI/UX design', description: 'O design de UI/UX concentra-se em criar uma experiência de usuário fluida...', link: '' },
     { icon: assets.graphics_icon, title: 'Graphics design', description: 'Soluções de design criativo para aprimorar a comunicação visual...', link: '' },
