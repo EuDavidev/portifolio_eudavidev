@@ -1,4 +1,4 @@
-import { Outfit, Ovo } from "next/font/google";
+import { Outfit, Ovo, Sora } from "next/font/google";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -13,6 +13,12 @@ const ovo = Ovo({
   variable: "--font-ovo",
 });
 
+const sora = Sora({
+  subsets: ["latin"],
+  weight: ["300", "600"],
+  variable: "--font-sora",
+});
+
 export const metadata = {
   title: "Portifolio - Davi Souza",
   description: "Portfólio pessoal de Davi Souza, exibindo projetos e serviços de design e desenvolvimento web.",
@@ -21,7 +27,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="pt-br" className="scroll-smooth">
-      <body className={`${outfit.variable} ${ovo.variable} antialiased leading-8 overflow-x-hidden`}>
+      <body className={`${outfit.variable} ${ovo.variable} ${sora.variable} antialiased leading-8 overflow-x-hidden`}>
         {children}
       </body>
     </html>

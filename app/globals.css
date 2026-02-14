@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --color-lightHover: #fcf4ff;
-  --color-darkHover: #2a004a;
-  --color-darkTheme: #11001f;
+  --color-lightHover: #FFF0E6;
+  --color-darkHover: #FF803B;
+  --color-darkTheme: #1E1E1E;
   --color-bg: #ffffff;
   --color-text: #1f2937;
   --shadow-black: 4px 4px 0 #000;
@@ -11,10 +11,10 @@
 }
 
 .dark {
-  --color-lightHover: #4c1d95;
-  --color-darkHover: #6b7280;
-  --color-bg: #11001f;
-  --color-text: #ffffff;
+  --color-lightHover: #FF803B;
+  --color-darkHover: #FF803B;
+  --color-bg: #1E1E1E;
+  --color-text: #FFFFFF;
 }
 
 body {
@@ -24,11 +24,18 @@ body {
 }
 
 .font-outfit {
-  font-family: "Outfit", sans-serif;
+  font-family: "Sora", sans-serif;
+  font-weight: 300;
 }
 
 .font-ovo {
-  font-family: "Ovo", sans-serif;
+  font-family: "Sora", sans-serif;
+  font-weight: 300;
+}
+
+.font-sora {
+  font-family: "Sora", sans-serif;
+  font-weight: 600;
 }
 
 .shadow-black {
@@ -102,8 +109,8 @@ body {
   background-color: rgba(31, 41, 55, 0.9);
 }
 
-.dark .group-hover\:bg-lime-300 {
-  background-color: #a3e635;
+.dark .group-hover\:bg-\[\#FF803B\] {
+  background-color: #FF803B;
 }
 
 .dark .border-black {
