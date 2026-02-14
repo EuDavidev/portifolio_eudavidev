@@ -111,7 +111,7 @@ export const serviceData = [
 ]
 
 export const infoList = [
-    { icon: assets.code_icon, iconDark: assets.code_icon_dark, title: 'Linguagens', description: ', TypeScript, JavaScript, Java, Python, Go.' },
+    { icon: assets.code_icon, iconDark: assets.code_icon_dark, title: 'Linguagens', description: 'TypeScript, JavaScript, Java, Python, Go.' },
     { icon: assets.edu_icon, iconDark: assets.edu_icon_dark, title: 'Educação', description: 'UNINTER - Bacharelado em Engenharia de Software' },
     { icon: assets.project_icon, iconDark: assets.project_icon_dark, title: 'Projetos', description: 'Mais projetos feitos por mim.' }
 ];
