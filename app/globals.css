@@ -109,9 +109,6 @@ body {
   background-color: rgba(31, 41, 55, 0.9);
 }
 
-.dark .group-hover\:bg-\[\#FF803B\] {
-  background-color: #FF803B;
-}
 
 .dark .border-black {
   border-color: #e5e7eb;
