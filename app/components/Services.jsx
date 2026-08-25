@@ -3,39 +3,34 @@ import { assets } from '@/assets/assets';
 import Image from 'next/image';
 import React from 'react';
 import { motion } from "motion/react"
+import { useReveal } from './motionPresets'
 
 const Services = () => {
+  const { section, item, viewport } = useReveal()
+
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 1 }}
+      initial="hidden"
+      whileInView="visible"
+      viewport={viewport}
+      variants={section}
       id='services' className='w-full px-[12%] py-10 scroll-mt-20'>
       <motion.h4
-        initial={{ y: -20, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.3, duration: 0.5 }}
+        variants={item}
         className='text-center mb-2 text-lg font-sora'>O que eu ofereço</motion.h4>
       <motion.h2
-        initial={{ y: -20, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.5, duration: 0.5 }}
+        variants={item}
         className='text-center text-5xl font-sora'>Meus Serviços</motion.h2>
 
       <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ delay: 0.7, duration: 0.5 }}
+        variants={item}
         className='text-center max-w-2xl mx-auto mt-5 mb-12 font-ovo'
       >Desenvolvedor web brasileiro dedicado a criar experiências digitais elegantes e funcionais, com um toque refinado de criatividade.</motion.p>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ delay: 0.9, duration: 0.6 }}
-        className='grid grid-cols-auto gap-6 my-10 font-outfit'>
+      <div className='grid grid-cols-auto gap-6 my-10 font-outfit'>
         {serviceData.map(({ icon, title, description, link }, index) => (
           <motion.div
+            variants={item}
             whileHover={{ scale: 1.05 }}
             key={index}
             className='border list-item-dark list-item-light rounded-xl px-8 py-12 cursor-pointer hover:bg-[var(--color-lightHover)] hover:-translate-y-1 duration-500'>
@@ -46,7 +41,7 @@ const Services = () => {
             </p>
           </motion.div>
         ))}
-      </motion.div>
+      </div>
     </motion.div>
   )
 }

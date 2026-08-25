@@ -117,5 +117,9 @@ export const infoList = [
 ];
 
 export const toolsData = [
-    assets.vscode, assets.firebase, assets.mongodb, assets.figma, assets.git
+    { icon: assets.vscode, name: 'VS Code' },
+    { icon: assets.firebase, name: 'Firebase' },
+    { icon: assets.mongodb, name: 'MongoDB' },
+    { icon: assets.figma, name: 'Figma' },
+    { icon: assets.git, name: 'Git' },
 ];
