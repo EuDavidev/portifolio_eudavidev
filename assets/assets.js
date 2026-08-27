@@ -79,35 +79,53 @@ export const assets = {
 export const workData = [
     {
         title: 'Projeto Frontend',
-        description: 'Web Development',
+        description: 'Landing page moderna para restaurante com design responsivo e animações suaves.',
         bgImage: '/work-1.png',
-        link: 'https://restaurante-pi-seven.vercel.app/'
+        link: 'https://restaurante-pi-seven.vercel.app/',
+        tags: ['Next.js', 'React', 'Tailwind'],
+        category: 'WEB',
+        year: '2024',
     },
     {
         title: 'Dev Cake',
-        description: 'Site de doces',
+        description: 'Site de confeitaria com catálogo interativo e design vibrante.',
         bgImage: '/work-2.png',
-        link: 'https://devcake.vercel.app/'
+        link: 'https://devcake.vercel.app/',
+        tags: ['Next.js', 'JavaScript', 'Tailwind'],
+        category: 'WEB',
+        year: '2024',
     },
     {
         title: 'Site de Carro',
-        description: 'Web Design',
+        description: 'Página showcase com design automotivo premium e efeitos visuais.',
         bgImage: '/work-3.png',
-        link: 'https://eudavidev.github.io/Site-base-NissanGTR/'
+        link: 'https://eudavidev.github.io/Site-base-NissanGTR/',
+        tags: ['HTML', 'CSS', 'JavaScript'],
+        category: 'WEB',
+        year: '2023',
     },
     {
         title: 'Dr. Agenda',
-        description: 'Web Development',
+        description: 'Sistema de agendamento médico com dashboard e gerenciamento de pacientes.',
         bgImage: '/work-4.png',
-        link: 'https://github.com/EuDavidev/doutor-agenda'
+        link: 'https://github.com/EuDavidev/doutor-agenda',
+        tags: ['Next.js', 'TypeScript', 'Tailwind'],
+        category: 'FULLSTACK',
+        year: '2025',
     },
 ]
 
+export const skillsData = [
+    'JavaScript', 'TypeScript', 'React', 'Next.js', 'Tailwind',
+    'Node.js', 'Python', 'Java', 'Go', 'HTML',
+    'CSS', 'MongoDB', 'Firebase', 'Git', 'Figma'
+];
+
 export const serviceData = [
-    { icon: assets.web_icon, title: 'Web development', description: 'O desenvolvimento web é o processo de construção, programação...', link: '' },
-    { icon: assets.mobile_icon, title: 'Mobile app', description: 'O desenvolvimento de aplicativos móveis envolve a criação de software para dispositivos móveis...', link: '' },
-    { icon: assets.ui_icon, title: 'UI/UX design', description: 'O design de UI/UX concentra-se em criar uma experiência de usuário fluida...', link: '' },
-    { icon: assets.graphics_icon, title: 'Graphics design', description: 'Soluções de design criativo para aprimorar a comunicação visual...', link: '' },
+    { icon: assets.web_icon, title: 'Web Development', description: 'Desenvolvimento de sites e aplicações web modernas, responsivas e otimizadas para performance, com foco em SEO e experiência do usuário.', link: '' },
+    { icon: assets.mobile_icon, title: 'Mobile App', description: 'Criação de aplicativos móveis multiplataforma com interfaces intuitivas e integração com APIs e serviços cloud.', link: '' },
+    { icon: assets.ui_icon, title: 'UI/UX Design', description: 'Design de interfaces centrado no usuário, com prototipagem em Figma, testes de usabilidade e design systems.', link: '' },
+    { icon: assets.graphics_icon, title: 'Automação', description: 'Automações inteligentes com Python e Node.js para otimizar processos, integrar sistemas e aumentar produtividade.', link: '' },
 ]
 
 export const infoList = [
@@ -123,3 +141,91 @@ export const toolsData = [
     { icon: assets.figma, name: 'Figma' },
     { icon: assets.git, name: 'Git' },
 ];
+
+import { Notes, Palette, Code, CheckCircle, Rocket } from 'iconoir-react';
+
+// ── Novos dados do redesign ──────────────────────────────────
+
+export const processData = [
+    {
+        step: '01',
+        title: 'Briefing',
+        description: 'Entendo suas necessidades, objetivos e visão do projeto em detalhes.',
+        icon: <Notes className="w-5 h-5" />,
+    },
+    {
+        step: '02',
+        title: 'Design',
+        description: 'Crio protótipos visuais no Figma, iterando até a aprovação.',
+        icon: <Palette className="w-5 h-5" />,
+    },
+    {
+        step: '03',
+        title: 'Código',
+        description: 'Desenvolvimento com código limpo, testes e melhores práticas.',
+        icon: <Code className="w-5 h-5" />,
+    },
+    {
+        step: '04',
+        title: 'Testes',
+        description: 'Validação de qualidade, performance e compatibilidade cross-browser.',
+        icon: <CheckCircle className="w-5 h-5" />,
+    },
+    {
+        step: '05',
+        title: 'Deploy',
+        description: 'Publicação, monitoramento e suporte contínuo pós-lançamento.',
+        icon: <Rocket className="w-5 h-5" />,
+    },
+]
+
+export const testimonialsData = [
+    {
+        name: 'Professor UNINTER',
+        role: 'Orientador Acadêmico',
+        quote: 'Davi demonstra excelente capacidade técnica e criatividade na resolução de problemas. Seus projetos sempre superam as expectativas.',
+        rating: 5,
+    },
+    {
+        name: 'Colega de Equipe',
+        role: 'Desenvolvedor',
+        quote: 'Trabalhar com o Davi é muito produtivo. Ele tem atenção aos detalhes e sempre entrega código limpo e bem documentado.',
+        rating: 5,
+    },
+    {
+        name: 'Supervisor Neoenergia',
+        role: 'Gestor de Projetos',
+        quote: 'Proativo e dedicado, o Davi trouxe soluções de automação que otimizaram significativamente nossos processos internos.',
+        rating: 5,
+    },
+]
+
+export const experienceData = [
+    {
+        period: '2024 - Atual',
+        title: 'Jovem Aprendiz',
+        institution: 'Neoenergia',
+        description: 'Atuação em processos administrativos e automações com Python para otimização de workflows internos.',
+    },
+    {
+        period: '2023 - Atual',
+        title: 'Desenvolvedor Full Stack',
+        institution: 'Freelancer',
+        description: 'Desenvolvimento de sites e aplicações web com React, Next.js e Tailwind para clientes diversos.',
+    },
+]
+
+export const educationData = [
+    {
+        period: '2024 - Atual',
+        title: 'Engenharia de Software',
+        institution: 'UNINTER',
+        description: 'Bacharelado em Engenharia de Software com foco em desenvolvimento web e arquitetura de sistemas.',
+    },
+    {
+        period: '2023',
+        title: 'Cursos e Certificações',
+        institution: 'Plataformas Online',
+        description: 'React, Next.js, TypeScript, Python e Java através de cursos especializados.',
+    },
+]

@@ -2,12 +2,14 @@ import { assets } from "@/assets/assets";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
+import { SunLight, HalfMoon, ArrowRight, Menu, Xmark } from "iconoir-react";
 
 const NAV_LINKS = [
   { href: "#top", label: "Home" },
   { href: "#about", label: "Sobre" },
+  { href: "#skills", label: "Skills" },
   { href: "#services", label: "Serviços" },
-  { href: "#work", label: "Meu Trabalho" },
+  { href: "#work", label: "Projetos" },
   { href: "#contact", label: "Contato" },
 ];
 
@@ -19,30 +21,51 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
 
   const closeMenu = () => setMenuOpen(false);
 
-  // Destaca o link da seção visível na viewport
+  // Scroll spy com mapeamento robusto de todas as seções
   useEffect(() => {
-    const ids = ['top', 'about', 'services', 'work', 'contact'];
-    const sections = ids.map((id) => document.getElementById(id)).filter(Boolean);
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActiveSection(entry.target.id);
-        });
-      },
-      { rootMargin: '-40% 0px -55% 0px' }
-    );
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
-  }, []);
+    const handleScroll = () => {
+      setIsScroll(window.scrollY > 20);
 
-  const linkClass = (href) =>
-    `font-ovo transition-colors duration-300 ${
-      activeSection === href.slice(1) ? 'text-[#FF803B]' : ''
-    }`;
+      const sectionMap = [
+        { id: 'top', target: 'top' },
+        { id: 'about', target: 'about' },
+        { id: 'skills', target: 'skills' },
+        { id: 'services', target: 'services' },
+        { id: 'process', target: 'services' },
+        { id: 'work', target: 'work' },
+        { id: 'testimonials', target: 'work' },
+        { id: 'experience', target: 'work' },
+        { id: 'contact', target: 'contact' },
+      ];
 
-  useEffect(() => {
-    const handleScroll = () => setIsScroll(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
+      // Se estiver bem no topo
+      if (window.scrollY < 180) {
+        setActiveSection('top');
+        return;
+      }
+
+      // Se estiver no final da página (rodapé/contato)
+      if ((window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 90)) {
+        setActiveSection('contact');
+        return;
+      }
+
+      const scrollPosition = window.scrollY + 200;
+
+      for (let i = sectionMap.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sectionMap[i].id);
+        if (el) {
+          const top = el.offsetTop;
+          if (scrollPosition >= top) {
+            setActiveSection(sectionMap[i].target);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Executa no mount inicial
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -60,58 +83,85 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
 
   return (
     <>
-      <div className="fixed top-0 right-0 w-11/12 -z-10 translate-y-[-80%] dark:hidden">
-      </div>
-      <nav className={`w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50 ${isScroll ? "bg-white/50 backdrop-blur-lg shadow-sm dark:shadow-white/20" : "bg-transparent"}`}>
-        <a href="#top">
+      <nav className={`w-full fixed top-0 left-0 right-0 px-5 lg:px-8 xl:px-[8%] py-3.5 flex items-center justify-between z-50 transition-all duration-300 ${
+        isScroll
+          ? 'glass-nav'
+          : 'bg-transparent border-b border-transparent'
+      }`}>
+        {/* Logo */}
+        <a href="#top" className="flex-shrink-0">
           <Image
             src={isDarkMode ? assets.logo_dark : assets.logo}
             alt="Logotipo do portfólio"
-            className="w-28 cursor-pointer mr-14"
+            className="w-28 cursor-pointer"
             priority
           />
         </a>
-        <ul className={`hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 bg-white/50 shadow-sm dark:bg-transparent dark:border dark:border-white/50`}>
-          {NAV_LINKS.map(({ href, label }) => (
-            <li key={href}><a className={linkClass(href)} href={href}>{label}</a></li>
-          ))}
+
+        {/* Nav Links Desktop */}
+        <ul className="hidden md:flex items-center gap-1 rounded-full px-3 py-1.5 bg-black/[0.03] dark:bg-white/[0.05] border border-black/5 dark:border-white/10 backdrop-blur-md font-sora">
+          {NAV_LINKS.map(({ href, label }) => {
+            const isActive = activeSection === href.slice(1);
+            return (
+              <li key={href} className="relative">
+                <a
+                  href={href}
+                  className={`relative block px-3.5 py-1.5 rounded-full text-xs font-sora font-medium transition-colors duration-200 ${
+                    isActive
+                      ? 'text-[#FF803B]'
+                      : 'text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white'
+                  }`}
+                >
+                  {label}
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-active-indicator"
+                      className="absolute inset-0 bg-[#FF803B]/10 dark:bg-[#FF803B]/15 rounded-full border border-[#FF803B]/30 -z-10"
+                      transition={{ type: 'spring', stiffness: 400, damping: 32 }}
+                    />
+                  )}
+                </a>
+              </li>
+            );
+          })}
         </ul>
-        <div className="flex items-center gap-4">
+
+        {/* Right Side */}
+        <div className="flex items-center gap-3 font-sora">
+          {/* Theme toggle */}
           <button
             onClick={() => setIsDarkMode(prev => !prev)}
             aria-label={isDarkMode ? "Ativar tema claro" : "Ativar tema escuro"}
+            className="w-9 h-9 rounded-xl flex items-center justify-center transition-colors duration-300 hover:bg-black/5 dark:hover:bg-white/5 cursor-pointer text-gray-700 dark:text-gray-300 hover:text-[#FF803B] dark:hover:text-[#FF803B]"
           >
-            <Image
-              src={isDarkMode ? assets.sun_icon : assets.moon_icon}
-              alt={isDarkMode ? "Ícone de sol para tema claro" : "Ícone de lua para tema escuro"}
-              className="w-6"
-            />
+            {isDarkMode ? (
+              <SunLight className="w-5 h-5 text-yellow-400" />
+            ) : (
+              <HalfMoon className="w-5 h-5 text-gray-700" />
+            )}
           </button>
+
+          {/* CTA Contact — desktop */}
           <a
             href="#contact"
-            className="hidden lg:flex items-center gap-3 px-10 py-2.5 border border-gray-500 rounded-full ml-4 font-ovo"
+            className="hidden lg:flex items-center gap-2 px-5 py-2 rounded-xl bg-[#FF803B] text-white text-xs font-sora font-medium transition-all duration-300 hover:bg-[#FF6A1A] hover:shadow-lg hover:shadow-[#FF803B]/20 hover:-translate-y-0.5 cursor-pointer"
           >
             Contato
-            <Image
-              src={isDarkMode ? assets.arrow_icon_dark : assets.arrow_icon}
-              alt="Seta para contato"
-              className="w-3"
-            />
+            <ArrowRight className="w-3.5 h-3.5" />
           </a>
+
+          {/* Mobile menu toggle */}
           <button
-            className="block md:hidden ml-3"
+            className="block md:hidden ml-1 w-9 h-9 rounded-xl flex items-center justify-center transition-colors hover:bg-black/5 dark:hover:bg-white/5 cursor-pointer text-gray-700 dark:text-gray-300"
             onClick={() => setMenuOpen(true)}
             aria-label="Abrir menu de navegação"
             aria-expanded={menuOpen}
           >
-            <Image
-              src={isDarkMode ? assets.menu_white : assets.menu_black}
-              alt="Ícone de menu"
-              className="w-6"
-            />
+            <Menu className="w-5 h-5" />
           </button>
         </div>
 
+        {/* Mobile Menu */}
         <AnimatePresence>
           {menuOpen && (
             <>
@@ -133,19 +183,16 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
                 transition={{ type: 'spring', stiffness: reduced ? 500 : 300, damping: reduced ? 50 : 30 }}
                 role="dialog"
                 aria-label="Menu de navegação"
-                className="flex md:hidden flex-col gap-4 py-20 px-10 fixed right-0 top-0 bottom-0 w-64 z-50 h-screen bg-rose-50 dark:bg-[var(--color-lightHover)]"
+                className="flex md:hidden flex-col gap-2 py-20 px-8 fixed right-0 top-0 bottom-0 w-72 z-50 h-screen bg-white dark:bg-[#1E1E1E] border-l border-black/5 dark:border-white/5 font-sora"
               >
                 <button
-                  className="absolute right-6 top-6"
+                  className="absolute right-6 top-6 w-9 h-9 rounded-xl flex items-center justify-center transition-colors hover:bg-black/5 dark:hover:bg-white/5 cursor-pointer text-gray-700 dark:text-gray-300"
                   onClick={closeMenu}
                   aria-label="Fechar menu"
                 >
-                  <Image
-                    src={isDarkMode ? assets.close_white : assets.close_black}
-                    alt="Ícone de fechar menu"
-                    className="w-5 cursor-pointer"
-                  />
+                  <Xmark className="w-5 h-5" />
                 </button>
+
                 {NAV_LINKS.map(({ href, label }, index) => (
                   <motion.li
                     key={href}
@@ -153,9 +200,36 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: reduced ? 0 : 0.1 + index * 0.05, duration: 0.3 }}
                   >
-                    <a className={linkClass(href)} onClick={closeMenu} href={href}>{label}</a>
+                    <a
+                      className={`block px-4 py-3 rounded-xl font-sora transition-all duration-300 ${
+                        activeSection === href.slice(1)
+                          ? 'text-[#FF803B] bg-[#FF803B]/8 font-medium'
+                          : 'text-gray-700 dark:text-gray-300 hover:bg-black/4 dark:hover:bg-white/4'
+                      }`}
+                      onClick={closeMenu}
+                      href={href}
+                    >
+                      {label}
+                    </a>
                   </motion.li>
                 ))}
+
+                {/* CTA mobile */}
+                <motion.li
+                  initial={{ opacity: 0, y: reduced ? 0 : 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: reduced ? 0 : 0.4, duration: 0.3 }}
+                  className="mt-4"
+                >
+                  <a
+                    href="#contact"
+                    onClick={closeMenu}
+                    className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#FF803B] text-white text-sm font-sora font-medium transition-all duration-300 hover:bg-[#FF6A1A]"
+                  >
+                    Entre em contato
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </a>
+                </motion.li>
               </motion.ul>
             </>
           )}

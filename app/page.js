@@ -2,11 +2,17 @@
 import { useEffect, useState } from "react";
 import About from "./components/About";
 import Contact from "./components/Contact";
+import Experience from "./components/Experience";
+import FloatingWhatsApp from "./components/FloatingWhatsApp";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import Metrics from "./components/Metrics";
 import Navbar from "./components/Navbar";
+import Process from "./components/Process";
 import ScrollProgress from "./components/ScrollProgress";
 import Services from "./components/Services";
+import SkillsSphere from "./components/SkillsSphere";
+import Testimonials from "./components/Testimonials";
 import Work from "./components/Work";
 
 export default function Home() {
@@ -34,14 +40,20 @@ export default function Home() {
 
   return (
     <>
-    <Navbar isDarkMode = {isDarkMode} setIsDarkMode={setIsDarkMode}/>
-    <Header />
-    <About />
-    <Services />
-    <Work isDarkMode = {isDarkMode} />
-    <Contact />
-    <Footer isDarkMode = {isDarkMode} />
-    <ScrollProgress />
+      <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+      <Header isDarkMode={isDarkMode} />
+      <Metrics />
+      <About isDarkMode={isDarkMode} />
+      <SkillsSphere />
+      <Services />
+      <Process />
+      <Work isDarkMode={isDarkMode} />
+      <Testimonials />
+      <Experience />
+      <Contact isDarkMode={isDarkMode} />
+      <Footer isDarkMode={isDarkMode} />
+      <ScrollProgress />
+      <FloatingWhatsApp />
     </>
   );
 }
