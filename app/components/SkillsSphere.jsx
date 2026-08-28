@@ -406,7 +406,7 @@ const SkillsSphere = () => {
       viewport={viewport}
       variants={section}
       id="skills"
-      className="w-full px-[12%] py-12 scroll-mt-20 overflow-hidden"
+      className="w-full px-5 sm:px-8 lg:px-[12%] py-12 scroll-mt-20 overflow-hidden"
     >
       <motion.div variants={item} className="text-center mb-2">
         <span className="section-eyebrow">Minhas Skills</span>
@@ -429,7 +429,7 @@ const SkillsSphere = () => {
           ref={containerRef}
           role="img"
           aria-label="Esfera 3D interativa de tecnologias. Arraste para rotacionar."
-          className="relative w-[450px] h-[450px] max-w-full aspect-square flex items-center justify-center cursor-grab active:cursor-grabbing touch-none"
+          className="relative w-full max-w-[450px] aspect-square flex items-center justify-center cursor-grab active:cursor-grabbing touch-none"
           onPointerDown={handlePointerDown}
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerUp}

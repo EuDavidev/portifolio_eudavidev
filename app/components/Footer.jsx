@@ -64,7 +64,7 @@ export const Footer = ({ isDarkMode }) => {
   return (
     <footer className='mt-20 font-sora'>
       {/* Main footer content */}
-      <div className='max-w-5xl mx-auto px-[12%] pb-8'>
+      <div className='max-w-5xl mx-auto px-5 sm:px-8 lg:px-[12%] pb-8'>
         <div className='grid grid-cols-1 md:grid-cols-3 gap-8 pb-10 border-b border-black/5 dark:border-white/5'>
           {/* Col 1 — Logo + greeting */}
           <div>
@@ -100,7 +100,7 @@ export const Footer = ({ isDarkMode }) => {
                 )}
               </AnimatePresence>
             </button>
-            <div className='flex items-center gap-4 mt-4'>
+            <div className='flex flex-wrap items-center gap-4 mt-4'>
               {[
                 { href: 'https://github.com/EuDavidev/', label: 'GitHub', icon: <Github className="w-4 h-4" /> },
                 { href: 'https://www.linkedin.com/in/davi-souza-075540309/', label: 'LinkedIn', icon: <Linkedin className="w-4 h-4" /> },
@@ -146,7 +146,7 @@ export const Footer = ({ isDarkMode }) => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: reduced ? 0.15 : 0.5 }}
-              className='text-center text-gray-400/70 italic max-w-sm'
+              className='text-center text-gray-400/70 italic max-w-xs sm:max-w-sm'
             >
               {QUOTES[quoteIdx]}
             </motion.p>

@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 html {
   scroll-behavior: smooth;
@@ -220,10 +221,6 @@ body {
 
 .dark .border-gray-500 {
   border-color: #6b7280;
-}
-
-.dark .bg-white {
-  background-color: #ffffff;
 }
 
 .dark .bg-white\/50 {

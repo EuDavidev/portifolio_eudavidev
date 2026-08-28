@@ -23,7 +23,7 @@ const RotatingText = ({ reduced }) => {
   }, [reduced])
 
   return (
-    <span className="inline-block relative h-[1.2em] overflow-hidden align-bottom min-w-[240px]">
+    <span className="inline-block relative h-[1.2em] overflow-hidden align-bottom min-w-[180px] sm:min-w-[240px]">
       <AnimatePresence mode="wait">
         <motion.span
           key={ROTATING_WORDS[index]}
@@ -190,7 +190,7 @@ export const Header = ({ isDarkMode }) => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: reduced ? 0.2 : 0.5, delay: reduced ? 0 : 0.5 }}
-              className='float-chip absolute -left-8 sm:-left-12 top-[15%] z-10 flex items-center gap-1.5'
+              className='float-chip absolute left-0 sm:-left-12 top-[15%] z-10 flex items-center gap-1.5'
             >
               <Code className='w-4 h-4 text-[#FF803B]' />
               React + Next.js
@@ -202,7 +202,7 @@ export const Header = ({ isDarkMode }) => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: reduced ? 0.2 : 0.5, delay: reduced ? 0 : 0.65 }}
-              className='float-chip absolute -right-6 sm:-right-10 bottom-[20%] z-10 flex items-center gap-1.5'
+              className='float-chip absolute right-0 sm:-right-10 bottom-[20%] z-10 flex items-center gap-1.5'
             >
               <Terminal className='w-4 h-4 text-[#FF803B]' />
               Python + Node.js
@@ -214,7 +214,7 @@ export const Header = ({ isDarkMode }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: reduced ? 0.2 : 0.5, delay: reduced ? 0 : 0.8 }}
-              className='float-chip absolute -right-4 sm:-right-8 top-[5%] z-10'
+              className='float-chip absolute right-0 sm:-right-8 top-[5%] z-10'
             >
               <span className='text-green-500'>●</span>
               Full Stack Dev

@@ -93,7 +93,7 @@ export const About = ({ isDarkMode }) => {
             whileInView="visible"
             viewport={viewport}
             variants={section}
-            id='about' className='w-full px-[12%] py-10 scroll-mt-20'>
+            id='about' className='w-full px-5 sm:px-8 lg:px-[12%] py-10 scroll-mt-20'>
 
             <motion.div variants={item} className='text-center mb-2'>
                 <span className='section-eyebrow'>Introdução</span>
@@ -111,11 +111,11 @@ export const About = ({ isDarkMode }) => {
                         </p>
                         <ul className='mt-6 space-y-3 text-sm'>
                             {INFO_ITEMS.map(({ icon, title, description }, index) => (
-                                <li key={index} className='flex items-center gap-3'>
+                                <li key={index} className='flex items-start gap-3'>
                                     <div className='w-8 h-8 rounded-lg bg-[#FF803B]/10 flex items-center justify-center flex-shrink-0'>
                                         {icon}
                                     </div>
-                                    <span className='font-semibold'>{title}:</span>
+                                    <span className='font-semibold whitespace-nowrap'>{title}:</span>
                                     <span className='text-gray-500 dark:text-gray-400'>{description}</span>
                                 </li>
                             ))}

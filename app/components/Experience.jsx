@@ -7,7 +7,7 @@ import { Suitcase, GraduationCap } from 'iconoir-react'
 const TimelineItem = ({ item: data, variants }) => (
   <motion.div variants={variants} className='relative pl-8 pb-8 last:pb-0 group'>
     {/* Dot */}
-    <div className='absolute left-0 top-1.5 w-3 h-3 rounded-full border-2 border-[#FF803B] bg-white dark:bg-[#1E1E1E] z-10 transition-colors group-hover:bg-[#FF803B]' />
+    <div className='absolute left-0 top-1.5 w-3 h-3 rounded-full border-2 border-[#FF803B] bg-[var(--color-bg)] z-10 transition-colors group-hover:bg-[#FF803B]' />
     {/* Line */}
     <div className='absolute left-[5px] top-4 bottom-0 w-px bg-gradient-to-b from-[#FF803B]/30 to-transparent' />
 
@@ -32,7 +32,7 @@ const Experience = () => {
       viewport={viewport}
       variants={section}
       id="experience"
-      className='w-full px-[12%] py-10 scroll-mt-20'
+      className='w-full px-5 sm:px-8 lg:px-[12%] py-10 scroll-mt-20'
     >
       <motion.div variants={item} className='text-center mb-2'>
         <span className='section-eyebrow'>Trajetória</span>

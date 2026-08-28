@@ -13,7 +13,7 @@ const Process = () => {
       viewport={viewport}
       variants={section}
       id="process"
-      className='w-full px-[12%] py-10 scroll-mt-20'
+      className='w-full px-5 sm:px-8 lg:px-[12%] py-10 scroll-mt-20'
     >
       <motion.div variants={item} className='text-center mb-2'>
         <span className='section-eyebrow'>Como eu trabalho</span>
@@ -22,7 +22,7 @@ const Process = () => {
         Meu Processo
       </motion.h2>
 
-      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 max-w-6xl mx-auto font-sora'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-6xl mx-auto font-sora'>
         {processData.map(({ step, title, description, icon }, index) => (
           <motion.div
             key={step}

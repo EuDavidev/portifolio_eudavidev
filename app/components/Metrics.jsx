@@ -49,7 +49,7 @@ const Metrics = () => {
             whileInView="visible"
             viewport={viewport}
             variants={section}
-            className='w-full px-[12%] py-10 font-sora'
+            className='w-full px-5 sm:px-8 lg:px-[12%] py-10 font-sora'
         >
             <div className='grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto'>
                 {metrics.map(({ value, suffix, label, icon }) => (

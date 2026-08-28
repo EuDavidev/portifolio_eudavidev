@@ -132,19 +132,19 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
           <button
             onClick={() => setIsDarkMode(prev => !prev)}
             aria-label={isDarkMode ? "Ativar tema claro" : "Ativar tema escuro"}
-            className="w-9 h-9 rounded-xl flex items-center justify-center transition-colors duration-300 hover:bg-black/5 dark:hover:bg-white/5 cursor-pointer text-gray-700 dark:text-gray-300 hover:text-[#FF803B] dark:hover:text-[#FF803B]"
+            className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-200 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-[#FF803B]/40 cursor-pointer text-gray-800 dark:text-gray-200 hover:text-[#FF803B] dark:hover:text-[#FF803B] active:scale-95 shadow-sm"
           >
             {isDarkMode ? (
               <SunLight className="w-5 h-5 text-yellow-400" />
             ) : (
-              <HalfMoon className="w-5 h-5 text-gray-700" />
+              <HalfMoon className="w-5 h-5 text-gray-800" />
             )}
           </button>
 
           {/* CTA Contact — desktop */}
           <a
             href="#contact"
-            className="hidden lg:flex items-center gap-2 px-5 py-2 rounded-xl bg-[#FF803B] text-white text-xs font-sora font-medium transition-all duration-300 hover:bg-[#FF6A1A] hover:shadow-lg hover:shadow-[#FF803B]/20 hover:-translate-y-0.5 cursor-pointer"
+            className="hidden lg:flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#FF803B] text-white text-xs font-sora font-medium transition-all duration-300 hover:bg-[#FF6A1A] hover:shadow-lg hover:shadow-[#FF803B]/20 hover:-translate-y-0.5 cursor-pointer"
           >
             Contato
             <ArrowRight className="w-3.5 h-3.5" />
@@ -152,7 +152,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
 
           {/* Mobile menu toggle */}
           <button
-            className="block md:hidden ml-1 w-9 h-9 rounded-xl flex items-center justify-center transition-colors hover:bg-black/5 dark:hover:bg-white/5 cursor-pointer text-gray-700 dark:text-gray-300"
+            className="md:hidden w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-200 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-[#FF803B]/40 cursor-pointer text-gray-800 dark:text-gray-200 hover:text-[#FF803B] dark:hover:text-[#FF803B] active:scale-95 shadow-sm"
             onClick={() => setMenuOpen(true)}
             aria-label="Abrir menu de navegação"
             aria-expanded={menuOpen}
@@ -173,7 +173,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
                 transition={{ duration: reduced ? 0.15 : 0.3 }}
                 onClick={closeMenu}
                 aria-hidden="true"
-                className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 md:hidden"
+                className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden"
               />
               <motion.ul
                 key="menu"
@@ -183,10 +183,10 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
                 transition={{ type: 'spring', stiffness: reduced ? 500 : 300, damping: reduced ? 50 : 30 }}
                 role="dialog"
                 aria-label="Menu de navegação"
-                className="flex md:hidden flex-col gap-2 py-20 px-8 fixed right-0 top-0 bottom-0 w-72 z-50 h-screen bg-white dark:bg-[#1E1E1E] border-l border-black/5 dark:border-white/5 font-sora"
+                className="flex md:hidden flex-col gap-2 py-20 px-8 fixed right-0 top-0 bottom-0 w-72 z-50 h-screen bg-white dark:bg-[#1E1E1E] text-gray-900 dark:text-white border-l border-black/10 dark:border-white/10 shadow-2xl font-sora"
               >
                 <button
-                  className="absolute right-6 top-6 w-9 h-9 rounded-xl flex items-center justify-center transition-colors hover:bg-black/5 dark:hover:bg-white/5 cursor-pointer text-gray-700 dark:text-gray-300"
+                  className="absolute right-6 top-6 w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-200 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-[#FF803B]/40 cursor-pointer text-gray-800 dark:text-gray-200 hover:text-[#FF803B] dark:hover:text-[#FF803B] active:scale-95 shadow-sm"
                   onClick={closeMenu}
                   aria-label="Fechar menu"
                 >
@@ -201,10 +201,10 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
                     transition={{ delay: reduced ? 0 : 0.1 + index * 0.05, duration: 0.3 }}
                   >
                     <a
-                      className={`block px-4 py-3 rounded-xl font-sora transition-all duration-300 ${
+                      className={`block px-4 py-3 rounded-xl font-sora transition-all duration-200 ${
                         activeSection === href.slice(1)
-                          ? 'text-[#FF803B] bg-[#FF803B]/8 font-medium'
-                          : 'text-gray-700 dark:text-gray-300 hover:bg-black/4 dark:hover:bg-white/4'
+                          ? 'text-[#FF803B] bg-[#FF803B]/10 font-semibold'
+                          : 'text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5'
                       }`}
                       onClick={closeMenu}
                       href={href}
@@ -224,7 +224,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
                   <a
                     href="#contact"
                     onClick={closeMenu}
-                    className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#FF803B] text-white text-sm font-sora font-medium transition-all duration-300 hover:bg-[#FF6A1A]"
+                    className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#FF803B] text-white text-sm font-sora font-medium transition-all duration-300 hover:bg-[#FF6A1A] shadow-md shadow-[#FF803B]/20"
                   >
                     Entre em contato
                     <ArrowRight className="w-3.5 h-3.5" />

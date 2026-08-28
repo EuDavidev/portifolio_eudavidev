@@ -43,7 +43,7 @@ const Testimonials = () => {
       viewport={viewport}
       variants={section}
       id="testimonials"
-      className='w-full px-[12%] py-10 scroll-mt-20'
+      className='w-full px-5 sm:px-8 lg:px-[12%] py-10 scroll-mt-20'
     >
       <div className='flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12'>
         <div>

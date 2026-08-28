@@ -20,7 +20,7 @@ const Services = () => {
       whileInView="visible"
       viewport={viewport}
       variants={section}
-      id='services' className='w-full px-[12%] py-10 scroll-mt-20'>
+      id='services' className='w-full px-5 sm:px-8 lg:px-[12%] py-10 scroll-mt-20'>
 
       <motion.div variants={item} className='text-center mb-2'>
         <span className='section-eyebrow'>O que eu ofereço</span>

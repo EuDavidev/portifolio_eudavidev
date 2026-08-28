@@ -66,7 +66,7 @@ export const Contact = ({ isDarkMode }) => {
       whileInView="visible"
       viewport={viewport}
       variants={section}
-      id='contact' className='w-full px-[12%] py-10 scroll-mt-20'>
+      id='contact' className='w-full px-5 sm:px-8 lg:px-[12%] py-10 scroll-mt-20'>
 
       <motion.div variants={item} className='text-center mb-2'>
         <span className='section-eyebrow'>Contato</span>
@@ -93,7 +93,7 @@ export const Contact = ({ isDarkMode }) => {
               placeholder='Seu nome'
               required
               name='name'
-              className='w-full px-4 py-3 rounded-xl border border-black/8 dark:border-white/8 bg-white/50 dark:bg-white/3 outline-none transition-all duration-300 focus:border-[#FF803B]/50 focus:ring-2 focus:ring-[#FF803B]/10 placeholder:text-gray-400'
+              className='w-full px-4 py-3 rounded-xl border border-black/8 dark:border-white/8 bg-white/50 dark:bg-white/3 dark:text-white outline-none transition-all duration-300 focus:border-[#FF803B]/50 focus:ring-2 focus:ring-[#FF803B]/10 placeholder:text-gray-400'
             />
             <motion.input
               variants={directionalItem(30, 0)}
@@ -101,7 +101,7 @@ export const Contact = ({ isDarkMode }) => {
               placeholder='Seu e-mail'
               required
               name='email'
-              className='w-full px-4 py-3 rounded-xl border border-black/8 dark:border-white/8 bg-white/50 dark:bg-white/3 outline-none transition-all duration-300 focus:border-[#FF803B]/50 focus:ring-2 focus:ring-[#FF803B]/10 placeholder:text-gray-400'
+              className='w-full px-4 py-3 rounded-xl border border-black/8 dark:border-white/8 bg-white/50 dark:bg-white/3 dark:text-white outline-none transition-all duration-300 focus:border-[#FF803B]/50 focus:ring-2 focus:ring-[#FF803B]/10 placeholder:text-gray-400'
             />
           </div>
 
@@ -111,7 +111,7 @@ export const Contact = ({ isDarkMode }) => {
             placeholder='Sua mensagem'
             required
             name='message'
-            className='w-full px-4 py-3 rounded-xl border border-black/8 dark:border-white/8 bg-white/50 dark:bg-white/3 outline-none transition-all duration-300 focus:border-[#FF803B]/50 focus:ring-2 focus:ring-[#FF803B]/10 placeholder:text-gray-400 mb-4 resize-none'
+            className='w-full px-4 py-3 rounded-xl border border-black/8 dark:border-white/8 bg-white/50 dark:bg-white/3 dark:text-white outline-none transition-all duration-300 focus:border-[#FF803B]/50 focus:ring-2 focus:ring-[#FF803B]/10 placeholder:text-gray-400 mb-4 resize-none'
           />
 
           <motion.button

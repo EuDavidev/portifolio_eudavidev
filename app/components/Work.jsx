@@ -98,7 +98,7 @@ export const Work = ({ isDarkMode }) => {
             whileInView="visible"
             viewport={viewport}
             variants={section}
-            id='work' className='w-full px-[12%] py-10 scroll-mt-20'>
+            id='work' className='w-full px-5 sm:px-8 lg:px-[12%] py-10 scroll-mt-20'>
 
             <motion.div variants={item} className='text-center mb-2'>
                 <span className='section-eyebrow'>Portfólio</span>
