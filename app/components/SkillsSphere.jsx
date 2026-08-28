@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState, useMemo, useCallback } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { useReveal } from './motionPresets'
+import CenterLogo3D from './CenterLogo3D'
 
 // ── Skills Database com SVGs e Cores Oficiais Revisadas ──────────────────────────
 export const SKILLS_CONFIG = [
@@ -437,13 +438,8 @@ const SkillsSphere = () => {
           onMouseEnter={() => { isHovering.current = true }}
           onMouseLeave={() => { isHovering.current = false; setHoveredSkill(null) }}
         >
-          {/* Glow Central */}
-          <div
-            className="absolute w-[360px] h-[360px] rounded-full pointer-events-none transition-opacity duration-500"
-            style={{
-              background: 'radial-gradient(circle, rgba(255, 128, 59, 0.14) 0%, rgba(255, 128, 59, 0.04) 45%, transparent 72%)',
-            }}
-          />
+          {/* Logo 3D no Centro da Esfera */}
+          <CenterLogo3D rotation={rotation} />
 
           {/* Anéis Orbitais SVG */}
           <svg
