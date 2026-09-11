@@ -115,7 +115,7 @@ export const About = ({ isDarkMode }) => {
                                     <div className='w-8 h-8 rounded-lg bg-[#FF803B]/10 flex items-center justify-center flex-shrink-0'>
                                         {icon}
                                     </div>
-                                    <span className='font-semibold whitespace-nowrap'>{title}:</span>
+                                    <span className='font-semibold shrink-0'>{title}:</span>
                                     <span className='text-gray-500 dark:text-gray-400'>{description}</span>
                                 </li>
                             ))}

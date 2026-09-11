@@ -3,8 +3,10 @@ import React, { useEffect, useRef, useState } from 'react'
 import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 
-const CenterLogo3D = ({ rotation }) => {
+const CenterLogo3D = ({ rotation, size = 220 }) => {
   const canvasRef = useRef(null)
+  const rendererRef = useRef(null)
+  const cameraRef = useRef(null)
   const modelRef = useRef(null)
   const reqIdRef = useRef(null)
   const rotationRef = useRef(rotation)
@@ -15,17 +17,26 @@ const CenterLogo3D = ({ rotation }) => {
     rotationRef.current = rotation
   }, [rotation])
 
+  // Atualizar dimensões do renderizador quando size mudar
+  useEffect(() => {
+    if (!rendererRef.current || !cameraRef.current) return
+    rendererRef.current.setSize(size, size)
+    cameraRef.current.aspect = 1
+    cameraRef.current.updateProjectionMatrix()
+  }, [size])
+
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
 
-    const width = 220
-    const height = 220
+    const width = size
+    const height = size
 
     // Cena, Câmera e Renderizador
     const scene = new THREE.Scene()
     const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100)
     camera.position.set(0, 0, 5)
+    cameraRef.current = camera
 
     const renderer = new THREE.WebGLRenderer({
       canvas,
@@ -37,6 +48,7 @@ const CenterLogo3D = ({ rotation }) => {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2))
     renderer.toneMapping = THREE.ACESFilmicToneMapping
     renderer.toneMappingExposure = 1.2
+    rendererRef.current = renderer
 
     // Iluminação elegante
     const ambientLight = new THREE.AmbientLight(0xffffff, 2.0)
@@ -146,10 +158,12 @@ const CenterLogo3D = ({ rotation }) => {
     <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
       {/* Glow pulsante de fundo */}
       <div
-        className={`absolute w-44 h-44 rounded-full transition-opacity duration-700 pointer-events-none ${
+        className={`absolute rounded-full transition-opacity duration-700 pointer-events-none ${
           loaded ? 'opacity-80' : 'opacity-30'
         }`}
         style={{
+          width: `${Math.round(size * 0.8)}px`,
+          height: `${Math.round(size * 0.8)}px`,
           background:
             'radial-gradient(circle, rgba(255, 128, 59, 0.28) 0%, rgba(255, 128, 59, 0.08) 50%, transparent 72%)',
           filter: 'blur(16px)',
@@ -158,8 +172,14 @@ const CenterLogo3D = ({ rotation }) => {
 
       <canvas
         ref={canvasRef}
-        className="w-[220px] h-[220px] max-w-[55vw] max-h-[55vw] pointer-events-none select-none transition-opacity duration-500"
-        style={{ opacity: loaded ? 1 : 0 }}
+        className="pointer-events-none select-none transition-opacity duration-500"
+        style={{
+          width: `${size}px`,
+          height: `${size}px`,
+          maxWidth: '55vw',
+          maxHeight: '55vw',
+          opacity: loaded ? 1 : 0,
+        }}
       />
     </div>
   )

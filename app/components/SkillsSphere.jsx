@@ -228,8 +228,41 @@ export const SKILLS_CONFIG = [
   },
 ]
 
-const RADIUS = 185
-const CAMERA_DIST = 460
+// ── Hook: dimensões responsivas da esfera ────────────────────────────────────────
+function useResponsiveSphere(containerRef) {
+  const [dims, setDims] = useState({ radius: 185, cameraDist: 460, logoSize: 220, k: 1 })
+
+  useEffect(() => {
+    const el = containerRef.current
+    if (!el) return
+
+    const compute = () => {
+      const w = el.clientWidth
+      if (!w) return
+
+      // No desktop o container atinge seu max-w de 450px
+      // Em telas menores, w varia de ~260px a 450px
+      if (w >= 430) {
+        setDims({ radius: 185, cameraDist: 460, logoSize: 220, k: 1 })
+      } else {
+        // Escala linear suave entre 270px e 430px
+        const t = Math.max(0, Math.min(1, (w - 270) / 160))
+        const radius = Math.round(105 + t * 80)        // 105 (mobile) → 185 (desktop)
+        const cameraDist = Math.round(330 + t * 130)   // 330 (mobile) → 460 (desktop)
+        const logoSize = Math.round(130 + t * 90)      // 130 (mobile) → 220 (desktop)
+        const k = 0.58 + t * 0.42                      // 0.58 → 1.0
+        setDims({ radius, cameraDist, logoSize, k })
+      }
+    }
+
+    compute()
+    const ro = new ResizeObserver(compute)
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [containerRef])
+
+  return dims
+}
 
 // Posições em Esfera de Fibonacci
 function computeFibonacciPositions(count, radius) {
@@ -264,8 +297,11 @@ const SkillsSphere = () => {
   const lastMousePos = useRef({ x: 0, y: 0 })
   const containerRef = useRef(null)
 
-  // Posições base estáticas calculadas uma vez (Esfera de Fibonacci)
-  const basePoints = useMemo(() => computeFibonacciPositions(SKILLS_CONFIG.length, RADIUS), [])
+  // Dimensões responsivas calculadas a partir do container
+  const { radius, cameraDist, logoSize, k } = useResponsiveSphere(containerRef)
+
+  // Posições base estáticas calculadas por Fibonacci com raio dinâmico
+  const basePoints = useMemo(() => computeFibonacciPositions(SKILLS_CONFIG.length, radius), [radius])
 
   // Loop de física fluida com interpolação LERP contínua
   useEffect(() => {
@@ -360,6 +396,7 @@ const SkillsSphere = () => {
 
     return SKILLS_CONFIG.map((skill, index) => {
       const p = basePoints[index]
+      if (!p) return null
 
       // Rotação Y
       const x1 = p.x * cosY + p.z * sinY
@@ -370,16 +407,18 @@ const SkillsSphere = () => {
       const z2 = p.y * sinX + z1 * cosX
 
       // Perspectiva suave
-      const scale = CAMERA_DIST / (CAMERA_DIST - z2)
+      const scale = cameraDist / (cameraDist - z2)
       const screenX = x1 * scale
       const screenY = y1 * scale
 
       // Profundidade normalizada (0 = trás, 1 = frente)
-      const depth = (z2 + RADIUS) / (2 * RADIUS)
+      const depth = (z2 + radius) / (2 * radius)
       const opacity = Math.max(0.28, Math.min(1, 0.4 + depth * 0.6))
-      const size = Math.max(26, Math.min(46, 36 * scale))
-      const iconSize = Math.max(13, Math.min(22, 17 * scale))
-      const zIndex = Math.round(z2 + RADIUS + 10)
+      const baseCard = 36 * k
+      const baseIcon = 17 * k
+      const size = Math.max(20 * k, Math.min(46 * k, baseCard * scale))
+      const iconSize = Math.max(10 * k, Math.min(22 * k, baseIcon * scale))
+      const zIndex = Math.round(z2 + radius + 10)
 
       return {
         ...skill,
@@ -392,8 +431,8 @@ const SkillsSphere = () => {
         zIndex,
         z2,
       }
-    })
-  }, [rotation, basePoints])
+    }).filter(Boolean)
+  }, [rotation, basePoints, radius, cameraDist, k])
 
   const meridianRx = useMemo(() => {
     const radY = (rotation.y * Math.PI) / 180
@@ -430,7 +469,7 @@ const SkillsSphere = () => {
           ref={containerRef}
           role="img"
           aria-label="Esfera 3D interativa de tecnologias. Arraste para rotacionar."
-          className="relative w-full max-w-[450px] aspect-square flex items-center justify-center cursor-grab active:cursor-grabbing touch-none"
+          className="relative w-full max-w-[340px] sm:max-w-[420px] md:max-w-[450px] aspect-square flex items-center justify-center cursor-grab active:cursor-grabbing touch-none"
           onPointerDown={handlePointerDown}
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerUp}
@@ -439,7 +478,7 @@ const SkillsSphere = () => {
           onMouseLeave={() => { isHovering.current = false; setHoveredSkill(null) }}
         >
           {/* Logo 3D no Centro da Esfera */}
-          <CenterLogo3D rotation={rotation} />
+          <CenterLogo3D rotation={rotation} size={logoSize} />
 
           {/* Anéis Orbitais SVG */}
           <svg

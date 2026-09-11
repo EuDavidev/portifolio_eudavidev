@@ -31,7 +31,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="pt-br" className="scroll-smooth">
+    <html lang="pt-br" className="scroll-smooth" suppressHydrationWarning>
       <body id="top" className={`${sora.variable} font-sora antialiased leading-8 overflow-x-hidden`}>
         {children}
       </body>
