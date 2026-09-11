@@ -469,7 +469,7 @@ const SkillsSphere = () => {
           ref={containerRef}
           role="img"
           aria-label="Esfera 3D interativa de tecnologias. Arraste para rotacionar."
-          className="relative w-full max-w-[340px] sm:max-w-[420px] md:max-w-[450px] aspect-square flex items-center justify-center cursor-grab active:cursor-grabbing touch-none"
+          className="relative z-0 w-full max-w-[340px] sm:max-w-[420px] md:max-w-[450px] aspect-square flex items-center justify-center cursor-grab active:cursor-grabbing touch-none"
           onPointerDown={handlePointerDown}
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerUp}
