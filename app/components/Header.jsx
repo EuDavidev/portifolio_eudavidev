@@ -23,7 +23,7 @@ const RotatingText = ({ reduced }) => {
   }, [reduced])
 
   return (
-    <span className="inline-block relative h-[1.2em] overflow-hidden align-bottom min-w-[180px] sm:min-w-[240px]">
+    <span className="inline-flex items-baseline relative h-[1.3em] overflow-hidden align-baseline min-w-[180px] sm:min-w-[240px]">
       <AnimatePresence mode="wait">
         <motion.span
           key={ROTATING_WORDS[index]}
@@ -31,7 +31,7 @@ const RotatingText = ({ reduced }) => {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: reduced ? 0 : -28, opacity: 0 }}
           transition={{ duration: reduced ? 0.15 : 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute left-0 text-[#FF803B]"
+          className="absolute left-0 bottom-0 text-[#FF803B]"
         >
           {ROTATING_WORDS[index]}
         </motion.span>
@@ -114,7 +114,7 @@ export const Header = ({ isDarkMode }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: reduced ? 0.2 : 0.5, delay: reduced ? 0 : 0.45 }}
-            className='flex flex-col sm:flex-row items-start gap-3 mt-8'
+            className='flex flex-col sm:flex-row items-center sm:items-start gap-3 mt-8'
           >
             <a
               href="#work"
